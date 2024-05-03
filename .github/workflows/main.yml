@@ -1,8 +1,7 @@
 name: Telegram Bot
 
 on:
-  schedule:
-    - cron: '0 * * * *' # Run every hour
+  workflow_dispatch:
 
 jobs:
   send-message:
@@ -21,4 +20,8 @@ jobs:
         run: npm install
 
       - name: Run script
-        run: node send-message.js
+        run: |
+          while true; do
+            node path/to/send-message.js
+            sleep 1
+          done
